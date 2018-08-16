@@ -1,0 +1,56 @@
+# Practica 1      15.Ago
+Una forma de relacionar dos variables es que estas se asocien deterministicamente.
+
+Es decir, para que x,y esten relacionadas deterministicamente es cuando una vez que se conocen el valor de el x, el valor de y queda compltamente especificado. 
+
+##### Ejemplo de una relacion **DETERMINISTICA** de dos variables s
+
+>*Renta carro->$25*
+>*km recorrido->$3*
+>*x-> num de km recorridos*
+>*y->Costo total renta carro*
+
+
+>Con estos datos se puede plantear la relaciom de x, y de la siguiente manera
+
+>y=25+3x
+
+>De esta forma tenemos una relacion de dos variables deterministicas. 
+
+Muchas variables x, y  que podrian estar relacionados entre si, sin embargo esta relacion  no necesariamenye deben ser determinisnisticamente 
+
+##### Ejemplo de **NO DETERMINISTICO**
+
+>*X->Promedio prepa*
+>*y->Promedio de la universidad*
+
+>En este caso el valor de y no puede ser determinado solo con el conocimiento de x y dos estudiantes podrían tener el mismo valor de x pero tener distinto valor de y 
+
+>En este ejemplo conocer el promedio d ela prepa del alumno es útil, debido a que permite predecir con limitaciones su promedio en la universidad. 
+
+El análisis de regresión es la parte de la estadistica que se utiliza para investigar la relacion entre dos o más variables asociadas de forma **NO DEREMINISTICA**
+
+
+# Modelo de regesion lineal simple
+
+La relación matemática deterministica más simple entre dos variales x,y es una relacion **y=B~0~^=^+B~1~^=^x**. 
+
+El conjunto de pares (x,y) para los cuales **y=B~0~^=^+B~1~^=^x** determina una linea recta con penddiente B~1~^=^ e intersección en y y=B~0~^=^. El objetivo de un modelo de regresion lineal es simple es desarrrollar un modelo probabilistico lineal, es decir, si las dos variables **NO** están deterministicamente relacionados, entonces con un valor fijo de x el valor de y es incierto.
+
+En estos casos , la variable x es la que se va a fijar su valor  o se conocen los valores de esta variable y se define como var independiente, la variable y es una vareable aleatoria y s ele conoce como var dependiente. 
+
+Para dos modelos de R.L.S se utilizarán n observaciones de las variables independientes que permiten conocer la var aleatoria y su valor observado(x)
+
+Un primer análisis gráfico de un modelo de R.L.S  es la grafica de dispersión que genera imágenes preliminares sobre la relación de var dep y var indep.
+
+
+##TAREA##
+x->c(0.4,0.42,.48,51,.57,.6,.7,.75,.75,.78,.84,.84,.95,.99,.1.03,1.12,1.15,1.20,1.25,1.25,1.28,1.30,1.34,1.37,1.40,1.43,1.46,1.49,1.55,1.58,1.6)
+y->c(1.02,1.21,.88,.98,1.52,1.83,1.5,1.8,1.74,1.63,2,2.8,2.48,2.47,3.05,3.18,3.76,3.68,3.82,3.21,4.27,3.12,3.99,3.75,4.10,4.18,3.77,4.34,4.21,4.92)
+
+1. Grafica de dispercion 
+  Tipo de relacion 
+  Identificar "outliers" 
+  Fuerza de la relacion (alta, media, baja)
+  Identificar outliers de otro color , si hay outliers eliminarlo y graficar nuevamente. 
+  
