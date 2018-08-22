@@ -1,0 +1,39 @@
+install.packages("ggplot2")
+library("ggplot2")
+
+x1<-c(132,129,120,113.2,105,92,84,83.2,88.4,59,80,81.5,71,69.2)
+y1<-c(46,48,51,52.1,54,52,59,58.7,61.6,64,61.4,54.6,58.8,58)
+z<-data.frame(x1,y1)
+abline(b2,B1)
+
+ggplot(z,aes(x = x1,y = y1))+geom_point()
+
+#Estimacion de B
+
+##MEDIAs
+x2<-x1-mean(x1)
+y2<-y1-mean(y1)
+x2
+y2
+
+multiplicacion<-x2*y2
+multiplicacion
+numerador<-sum(multiplicacion)
+numerador
+
+denominador<-sum(x2^2)
+denominador
+
+B1<-numerador/denominador
+B1
+
+
+##Para B2
+b2<-((sum(y1)-B1*sum(x1))/length(x1))
+b2
+##Recta
+
+recta<-b2+(B1*x)
+plot(recta)
+plot(x1,y1)
+abline(b2,B1)
