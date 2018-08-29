@@ -1,0 +1,23 @@
+#############PROBLEMA10######################
+#Suponga que el costo esperado de una corrida de produccion esta relacionado con el tamaño de la corrida mediante la ecuacion y=400+10x.  Sea Y una observacion sobre el costo de una corrida. Si el tamaño de las variables y el costo estan relacionados con el modelo de regresion linal simple. ¿Podria ser el caso de que P(Y>550 cuando x=100) =0.5 y P(Y>200 cuando x=100) =0.1
+#Explique. 
+
+#############PROBLEMA11######################
+#11. Suponga que en un cierto proceso quimico el tiempo de reaccion y (h) esta relacionado con la temperatura (F) en la camara en la cual la regresion lineal simple con la ecuacion y=5-.01x y varianza=0.075
+###a) ¿Cual es el cambio esperado del tiempo de reaccion con un incremento de 1F de la temperatura?¿Conun incrmento de 10F de la temperatura?
+##Incremento de 1F en la temperatura
+y=5-(0.1*(1))
+y
+#RESP=4.9
+###Incremento de 10F en la temperatura
+y2=5-(0.1*(10))
+y2
+#RESP=4
+
+###b) ¿Cual es el tiempo de reaccion esperado cuando la temperatura es de 200F?
+y3=5-(0.1*(200))
+y3
+#RESP=-15
+#c) Suponga que se realizan cinco observaciones independientemente del tiempo de reaccion, cada una para una temperatura de 250F¿Cual es la probabilidad de que las cinco onservaciones resulten entre 2.4 y 2.6?
+
+#d) Cual es la proba de que dos tiempos de reaccion  independientes observados a temperatura mas alta exceda el tiempo a la temperatura mas baja?
