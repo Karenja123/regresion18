@@ -1,0 +1,37 @@
+###############PROBLEMA 1#####################################
+x<-c(170,172,173,174,174,175,176,177,180,180,180,180,180,181,181,182,182,182,182,184,184,185,186,188)
+y<-c(.84,1.31,1.42,1.03,1.07,1.08,1.04,1.80,1.45,1.60,1.61,2.13,2.15,.84,1.43,.90,1.81,1.94,2.68,1.49,2.52,3,1.87,3.08)
+z=data.frame(x,y)
+#GRAFICA DE HOJAS Y TALLOS
+boxplot(x)
+x<-c(170,172,173,174,174,175,176,177,180,180,180,180,180,181,181,182,182,182,182,184,184,185,186,188)
+y<-c(.84,1.31,1.42,1.03,1.07,1.08,1.04,1.80,1.45,1.60,1.61,2.13,2.15,.84,1.43,.90,1.81,1.94,2.68,1.49,2.52,3,1.87,3.08)
+data.frame(x,y)
+#GRAFICA DE TEPERATURA
+boxplot(x)
+mean(x)
+#podemos deducir que la mayor parte de las temperaturas osilan entre los valores desde 176 hasta 182 
+#con media en 179.5, sin outliers.
+
+#GRAFICA DE EFICIENCIA
+boxplot(y)
+mean(y)
+#podemos deducir que la mayor parte de la eficiencia osilan entre los valores desde 1.2 hasta 2.0
+#con media en 1.5, sin outliers.
+
+#b)El valor de la relación de eficiencia ¿estará determinadopor completo y de forma única por la temperatura del tanque? 
+
+plot(x,y)
+#Con la grafica podemos ver que hay relacion sin embargo que tanto x puede explicar a y, en este caso que tanto la temperatura nos puede explicar la eficiecia, a mayor error (distancia) menor porcentaje de explicacion, sabemos que x explica o esta relacionada completamente a y cuando la grafica es una linea recta, es decir a cada y le corresponde un x y viceversa. En esta ocasion los puntos estas disparcidos, es decir hay variabilidad lo que significa que no hay gran relacion entre la variable temperatura y eficiencia. 
+#completamente relacionada = completamente lineal 
+
+#c)¿Sera que la relacion de eficiencia bien podria pronosticarse mediante el valor de la teperatura? 
+
+
+##Como dijimos en el inciso anterior la relacion encontrada es media, lo que significa que si queremos pronosticar el valor de la eficiencia basada en la tempratura s epodria hacer porque existe relacion, sin embargo nuetro pronostico seri deficiente ya que existe un error. 
+
+#en el inciso anterior se realizo la grafica de dispersión y podemos ver que aunque la correlación indica una 
+#relación positiva entre x y y, no porque observemos una temperatura mayor, la eficiencia va a ser mayor,
+
+
+###############PROBLEMA 2#####################################
