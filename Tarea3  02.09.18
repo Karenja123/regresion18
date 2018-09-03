@@ -1,0 +1,66 @@
+install.packages("ggplot2")
+library("ggplot2")
+diamonds
+
+set.seed(1410) # Make the sample reproducible
+dsmall <- diamonds[sample(nrow(diamonds), 100), ]
+dsmall
+
+#simple use
+qplot(carat, price, data = diamonds)
+qplot(log(carat), log(price), data = diamonds)
+qplot(carat, x * y * z, data = diamonds)
+
+#Color size shape
+##COLORS
+qplot(carat, price, data = dsmall, colour = color) #Puntos de colores
+qplot(carat, price, data = dsmall, shape = cut) #Puntos de figuras
+##For tranparence#
+qplot(carat, price, data = diamonds, alpha = I(1/10)) #menos transparencia
+qplot(carat, price, data = diamonds, alpha = I(1/100))
+qplot(carat, price, data = diamonds, alpha = I(1/200))#Mas transparencia
+#Plot geoms
+qplot(carat, price, data = dsmall, geom = c("point", "smooth"))
+qplot(carat, price, data = diamonds, geom = c("point", "smooth"))
+#Smooth=suave
+qplot(carat, price, data = dsmall, geom = c("point", "smooth"),
+      span = 0.2)
+qplot(carat, price, data = dsmall, geom = c("point", "smooth"),
+      span = 1)
+#span=lapso   Sirve para encontrar mas etalles en la regresion
+
+##Boxplots and jittered points
+qplot(color, price / carat, data = diamonds, geom = "jitter",
+      alpha = I(1 / 5))
+qplot(color, price / carat, data = diamonds, geom = "jitter",
+      alpha = I(1 / 50))
+qplot(color, price / carat, data = diamonds, geom = "jitter",
+      alpha = I(1 / 200))
+##Histogram and density plots
+qplot(carat, data = diamonds, geom = "histogram")#Grafica d ebarras
+qplot(carat, data = diamonds, geom = "density")#Grafica de lineas
+qplot(carat, data = diamonds, geom = "histogram", binwidth = 1,
+      xlim = c(0,3))# bindwith= ancho de la barra, xlim=numero de barras
+qplot(carat, data = diamonds, geom = "histogram", binwidth = 0.1,
+      xlim = c(0,3))
+qplot(carat, data = diamonds, geom = "histogram", binwidth = 0.01,
+      xlim = c(0,3))
+#Para comparar as distribuciones de diferentes subgrupos 
+qplot(carat, data = diamonds, geom = "density", colour = color)#Separa por colo pero solo la slineas
+qplot(carat, data = diamonds, geom = "histogram", fill = color)#separa por color rellenando las barras
+##Bar charts
+#Para variables de tiempo es recomendable usar Lines
+qplot(date, unemploy / pop, data = economics, geom = "line")
+qplot(date, uempmed, data = economics, geom = "line")
+#Esta sgraficas son como las que s eusan en el setor financiero de la sgrandes empresas. 
+##Faceting}
+qplot(carat, data = diamonds, facets = color ~ .,
+      geom = "histogram", binwidth = 0.1, xlim = c(0, 3))
+qplot(carat, ..density.., data = diamonds, facets = color ~ .,
+      geom = "histogram", binwidth = 0.1, xlim = c(0, 3))
+#Other options
+> qplot(
+  + carat, price, data = dsmall,
+  + xlab = "Price ($)", ylab = "Weight (carats)",
+  + main = "Price-weight relationship"
+  + )
