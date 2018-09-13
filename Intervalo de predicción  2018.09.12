@@ -1,0 +1,37 @@
+x1<- c(8, 15, 16.5, 20, 20, 27.5, 30, 30, 35, 38, 40, 45, 50, 50, 55, 55, 59, 65) #profundidad
+y1<-c(22.8,27.2,23.7,17.1,21.5,18.6,16.1,23.4,13.4,19.5,
+      12.4,13.2,11.4,10.3,14.1,9.7,12,6.8) #resistencia 
+#calular un intervalo de prediccion al 95% 
+#con una profundidad de 
+mod<-lm(y1~x1)
+summary(mod)
+show(mod)
+yesperado=27.1829-(0.2976*45)
+yesperado
+tv=qt(0.05/2,length(x1)-2)
+tv
+sxx=sum(x1^2)-(sum(x1^2)/length(x1))
+sxx
+
+LI=yesperado-(2.864*2.119905*sqrt(1+(1/length(x1))+((45-mean(x1))^2/sxx)))
+LI
+LS=yesperado+(2.864*2.119905*sqrt(1+(1/length(x1))+((45-mean(x1))^2/sxx)))
+LS
+
+
+####ejercicio 2
+x2<-c(23,45,68,91,114,136,159,182,205,228)
+y2<-c(53.3,26.9,54.8,33.8,29.9,8.2,17.2,12.2,3.2,11.1)
+#avala la grafica de dispercion la seleccion del modelo
+#obtenga la ecuacion de la recta de min cuadrados
+#que proporcion de la variacion observada
+#
+plot(x2,y2)
+###la grafica tiene un comportamiento decreciente es decir pendiente negativa
+###lo que indeca que sera una relacion negativa
+cor(x2,y2)
+###la correlacion confirma lo observado en la grafica con un -.8372451
+###lo que indica una correlacion negativa fuerte 
+mod2<-lm(x2~y2)
+summary(mod2)
+###
