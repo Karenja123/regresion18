@@ -1,0 +1,47 @@
+################INTERVALOS DE CONFIANZA############################
+
+x<-c(29.8,33.2,33.7,35.3,35.5,36.1,36.2,36.3,37.5,37.7,38.7,38.8,39.6,41,42.8,42.8,43.5,45.6,46,46.9,48,49.3,51.7,62.6,69.8,79.5,80)
+y<-c(5.9,7.2,7.3,6.3,8.1,6.8,7,7.6,6.8,6.5,7,6.3,7.9,9,8.2,8.7,7.8,9.7,7.4,7.7,9.7,7.8,7.7,11.6,11.3,11.8,10.7)
+
+#1) Calcule el intervalo de confianza  95% para la resistencia promedio del modulo de elasticidad es 40
+mod1<-lm(y ~ x)
+summary(mod1)
+
+LI=0.1075-(qt(0.025,length(x)-2)*0.0128)
+LI
+LS=0.1075+(qt(0.025,length(x)-2)*0.0128)
+LS
+
+
+install.packages("ggplot2")
+library(ggplot2)
+aal=data.frame(x=40)
+predict (mod1, aal, interval="confidence") #da por defaut el 95% de confianza
+datos=data.frame(x,y)
+require(ggplot2)
+ggplot(datos,aes(x,y))+geom_point(pch=18,col="red")+geom_smooth(method="lm")
+
+
+
+#3) Calcule el intervalo de confianza  90% para la resistencia promedio del modulo de elasticidad es 40
+mod2<-lm(y ~ x)
+summary(mod2)
+aa2=data.frame(x=40)
+predict (mod1, aa2, interval="confidence",level=0.90) #da por defaut el 95% de confianza
+
+#2) Calcule el intervalo de confianza  95% para la resistencia promedio del modulo de elasticidad es 40
+mod3<-lm(y ~ x)
+summary(mod3)
+aa3=data.frame(x=60)
+predict (mod1, aa3, interval="confidence") #da por defaut el 95% de confianza
+
+##Para grafica##
+
+aa3=data.frame(x=40)
+predict(mod1,)
+
+################INTERVALOS DE PREDICCION############################
+
+
+#cuando el vol pluvial es de 40 para predecir el escirrimiento de forma precisa
+#confiable ¿Sugiere el intervalo resultante del eje 1 informacion precisa sobre el valor 
