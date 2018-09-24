@@ -1,0 +1,133 @@
+install.packages("UsingR")
+require("UsingR")
+library("UsingR")
+data(father.son)
+father.son
+x=father.son[,1]
+y=father.son[,2]
+mod=lm(y~x)
+summary(mod)
+##VALOR DE P
+#p-value es igual a 0.00000000000000000002 es decir es menos a 0.05 por lo que se lechaza la hipotesis nula
+
+#INTERPRETE AMBOS PARAMETROS
+##B1: Por cada aumento en una inidade de la estatura del padre el hijo aumentará 0.51409 cm
+##p-value: Es el nivel de sigificancia mas pequeño, como se rechaza la hipotesis quiere decir que hay una relacion lineal significativa etre ambas variables. 
+
+#Pedecir la altura del hijo
+yesp=33.886660+0.51409*80
+yesp
+
+#El niño tendria un altura de 75.01 pulgadas, podria ser logico si el padre realmente midiera 80 pulgadas, sin embargo la estatura promedio de lso hombres es menor a esa 
+plot(x,y)
+boxplot(x)
+
+#Aunque s epodria descartar la posibilidad ya que al graficar podemos ver que el 75 ya es un layout es decir un punto estremo, por lo que 80 pulgado tmb lo sera 
+
+data(mtcars)
+mtcars
+
+x1 = mtcars[,4]
+y1 = mtcars[,1]
+mod1 = lm(y1 ~ x1)
+summary(mod1)
+
+#INTERPRETACION COEFICIENTES
+#BO: El valor MAXIMO de las millas por galon será de 30 mpg
+#b1: Podemos ver que estas dos variables tienen una relcion negativa, 
+#por lo que Al aumentar una unidad los caballos de fuerza, las millas por galon disminuirán 0.06823 unidades. Y  tiene sentido entres mas rapido vayas menos te rinde la gasolina.. 
+
+
+#DIAGRAMA DE DISPERSION
+plot(x1,y1)
+
+#RECTA DE AJUSTE EN DIGRAMA DE DISPERCION
+install.packages("ggplot2")
+require(ggplot2)
+library("ggplot2")
+m<-data.frame(x1,y1)
+ggplot(m,aes(x1,y1))+geom_point(pch=18,col="red")+geom_smooth(method="lm")
+
+g1=data.frame(x1,y1)
+ggplot(g1,aes(x1,y1))+geom_point(pch=18,col="red")+geom_smooth(method="lm")
+
+#PREDECIR MILLAS POR GALON PARA UNA POTENCIA DE 11 HP
+yesp1=30.09886-0.06823*111
+yesp1
+
+#GRAFICAR y y  RESIDUALES
+res = y-mean(y)
+plot(y,res,type="l")
+
+ocho = data.frame(y,res)
+ggplot(ocho,aes(y,res))+geom_point()
+
+#VARIANZA RESIDUAl
+#Directo
+summary(mod)
+yesp2=33.88660+0.51409*x
+SSE= sum((y-yesp2)^2)
+S2=SSE/length(x)
+S2
+#MetodoLM
+S22=2.437^2
+S22
+
+#COEFICIENTE DE DETERMINACION
+SSE=sum((y-yesp2)^2)
+SST=sum((y-mean(y))^2)
+r2=1-SSE/SST
+r2
+
+"""
+**************************************************************************************************************************
+INTERVALOS DE CONFIANZA
+************************************************************************************************************************
+"""
+#iNTERVALO DE CONFIANZA PARA EL COEFICIENTE D ELA PENDIENTE (B1)
+summary(mod)
+tv=qt(0.05/2,length(x)-2)
+tv
+Sxx=sum(x^2)-(((sum(x))^2)/length(x))
+Sxx
+sum((x-mean(x))^2)
+LIC=0.51409-(-tv)*((2.437^2)/Sxx)
+LIC
+LSC=0.51409+(-tv)*(2.437^2/Sxx)
+LSC
+
+
+"""
+**************************************************************************************************************************
+INTERVALOS DE PREDICCION
+************************************************************************************************************************
+"""
+
+#iNTERVALO DE Prediccion
+#Directo
+summary(mod)
+tv=qt(0.05/2,length(x)-2)
+tv
+mean(x)
+yesp=33.88660+0.51409*(mean(x))
+yesp
+Sxx=sum((x)^2)-(sum(x^2))/length(x))
+Sxx
+raiz=sqrt(1+(1/length(x))+((mean(x)-mean(x))^2/sxx))
+raiz
+
+LIC=yesp-(-tv)*(2.437)*raiz
+LIC
+
+LSC=yesp+(-tv)*(2.437)*raiz
+LSC
+
+#CON FORMULA 
+aal=data.frame(x=mean(x))
+predict (mod, aal, interval="predict") #da por defaut el 95% de confianza
+
+
+#GRAFICAR
+datos=data.frame(x,y)
+require(ggplot2)
+ggplot(datos,aes(x,y))+geom_point(pch=18,col="red")+geom_smooth(method="lm")
