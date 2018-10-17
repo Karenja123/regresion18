@@ -1,0 +1,34 @@
+Si nosotros NO RECHAZAMOS ho, es decir aceptamos B3 y B4 no estan aportando
+Si nosotros RECHAZAMOS ho aceptamos la alernativa 
+
+Es un contraste de hipotes
+Lo que se trata de probar en un stadistico f ES QUE b3= b4=0 si es verdad, nos quedamos solo con dos variables
+
+Si F<0.05 para que rechacemos la Ho -> Rechazo 
+Si F>0.05 para que rechacemos la Ho -> No Rechazamos Ho install.packages("readxl")
+
+
+***EJEMPLO***
+
+mod = lm(papel$COST ~ papel$paper+papel$machine)
+mod1 = lm(papel$COST ~ papel$paper+papel$machine+papel$overhead+papel$labor )
+
+anova(mod,mod1)
+
+En este ejemplo
+
+La f es de 0.46 por lo que no se rechaza Ho y las variables overhead y labor no aportan al modelo. 
+
+***EJEMPLO2***
+BD: Taxis
+
+mod_taxi = lm(taxi$number_of_steps~ taxi$total_distance)
+mod_taxi2 = lm(taxi$number_of_steps~ taxi$total_distance+taxi$total_travel_time)
+anova(mod_taxi,mod_taxi2)
+
+F es 0.0001532 por lo que es menor a 0.05, se concluye que al rechazar Ho podemos decir que se no solo nos quedaremos
+con la variable distancia, sino qu epara determinar el numeor de pasos de manera mas significativa, tomaremos en cuenta tmb el tiempo 
+del viaje, variable que contibuye significativamente al modelo e incrementa su R 
+
+
+
